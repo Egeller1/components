@@ -1,42 +1,227 @@
-#root {
-  max-width: 1280px;
+:root {
+  --color-1: #adb2d4;
+  --color-2: #c7d9dd;
+  --color-3: #d5e5d5;
+  --color-4: #eef1da;
+
+  --font-primary: "Helvetica Neue", Arial, sans-serif;
+  --font-size-main: 1.2rem;
+  --text-color-dark: #333;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: var(--font-primary);
+  background-color: var(--color-4);
+  color: var(--text-color-dark);
+}
+
+.App {
+  width: 100%;
+  height: 100%;
+}
+
+.sections {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100vh;
+}
+
+.snap-section {
+  min-height: 100vh;
+  width: 100vw;
+  scroll-snap-align: start;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 6rem 3rem;
+  box-sizing: border-box;
+}
+
+#introduction {
+  background: linear-gradient(135deg, var(--color-1) 40%, var(--color-4) 100%);
+}
+#sketch {
+  background: linear-gradient(135deg, var(--color-2) 40%, var(--color-4) 100%);
+}
+#research {
+  background: linear-gradient(135deg, var(--color-3) 40%, var(--color-4) 100%);
+}
+#observations {
+  background: linear-gradient(135deg, var(--color-4) 40%, var(--color-2) 100%);
+}
+#personas {
+  background: linear-gradient(135deg, var(--color-1) 40%, var(--color-3) 100%);
+}
+#storyboard {
+  background: linear-gradient(135deg, var(--color-2) 40%, var(--color-4) 100%);
+}
+#conclusion {
+  background: linear-gradient(135deg, var(--color-3) 40%, var(--color-4) 100%);
+}
+
+h1,
+h2 {
+  margin-bottom: 1rem;
+  text-align: center;
+  line-height: 1.2;
+  color: #222;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 3.5rem;
+}
+
+p,
+ul,
+li {
+  font-size: var(--font-size-main);
+  line-height: 1.6;
+  margin: 0.75rem auto;
+  max-width: 1000px;
+  text-align: left;
+}
+
+.container {
+  max-width: 1400px;
+  width: 100%;
   margin: 0 auto;
+}
+
+.scroll-indicator {
+  position: fixed;
+  top: 50%;
+  right: 30px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  z-index: 100;
+}
+
+.indicator-dot {
+  width: 16px;
+  height: 16px;
+  background: #bbb;
+  border-radius: 50%;
+  border: 2px solid #777;
+  transition: transform 0.3s, background 0.3s;
+  cursor: pointer;
+}
+
+.indicator-dot:hover {
+  transform: scale(1.2);
+}
+
+.indicator-dot.active {
+  background: #444;
+}
+
+.sketch-image-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 2rem auto;
+}
+
+.sketch-image-wrapper img {
+  max-width: 1200px;
+  width: 100%;
+  height: auto;
+}
+
+.storyboard-frames {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 2rem auto;
+}
+
+.storyboard-frame {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
   padding: 2rem;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.storyboard-frame img {
+  width: 100%;
+  height: auto;
+}
+
+.frame-caption {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+.persona-maps {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.persona-map {
+  max-width: 680px;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.placeholder-image {
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.persona-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.persona-card {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  margin: 1rem;
+  padding: 1rem 1.5rem;
+  text-align: left;
+  width: 300px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.persona-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.2rem;
   }
-  to {
-    transform: rotate(360deg);
+  h2 {
+    font-size: 1.8rem;
   }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  .indicator-dot {
+    width: 14px;
+    height: 14px;
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+  .snap-section {
+    padding: 4rem 1.5rem;
+  }
 }

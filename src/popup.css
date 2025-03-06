@@ -225,3 +225,47 @@ body {
   color: #dddddd;
   margin-top: 10px;
 }
+
+@media print {
+  /* Reset or adjust styles that don't work well on paper */
+
+  /* Example: Use a white background for printing */
+  body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  /* Adjust container width so it fits nicely on a printed page */
+  .popup-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 20px !important;
+  }
+
+  /* Ensure text is black for readability */
+  .popup-header h1,
+  .popup-header p,
+  .section-title,
+  .section p,
+  .popup-text,
+  .reflection-list li {
+    color: #000000 !important;
+  }
+
+  /* You might hide certain elements that aren't useful in print */
+  .popup-footer {
+    display: none;
+  }
+
+  /* Avoid large margins that could cause awkward page breaks */
+  .section {
+    margin: 20px 0 !important;
+    page-break-inside: avoid;
+  }
+
+  /* Scale images down if they’re too large to fit on the page */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+}
